@@ -1,0 +1,24 @@
+{
+    "name:": "Agroapp/tiendaOnline",
+    "descripcion":"productos en linea",
+    "type":"project",
+    "license":"MIT",
+    "author":[
+        {
+            "name":"ArredondoJuan",
+            "email":"juan.arredondo@campusvirtual.aunarvillavicencio.edu.co"
+        },
+        {
+            "name":"SenderMolano",
+            "email":"sender.molano@campusvirtual.aunarvillavicencio.edu.co"
+        }
+    ],
+    "require":{
+        
+    },
+    "autoload":{
+        "psr-4":{
+            "Agroapp\\":"src/"
+        }
+    }
+}
