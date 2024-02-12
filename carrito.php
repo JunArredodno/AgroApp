@@ -19,7 +19,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
             actualizarProducto($id);
         }else{
             //Si el registro de lcarro no existe
-            actualizarProducto($resultado, $id);
+            agregarProducto($resultado, $id);
         }
     }else{
         //Si el caro no existe
@@ -38,7 +38,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tienda Agroapp</title>
+    <title>Carrito de compras</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
