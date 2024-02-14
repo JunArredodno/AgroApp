@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info'])){
+    header("location: ../index.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

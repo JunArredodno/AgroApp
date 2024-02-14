@@ -103,27 +103,17 @@ class Pedido{
         return false;
     }
 	
-	/*
-    public function mostrarUltimos()
-    {
-        $sql = "SELECT p.id, nombre, apellidos, email, total, fecha FROM pedidos p 
-        INNER JOIN clientes c ON p.usuario_id = c.id ORDER BY p.id DESC LIMIT 10";
+	public function mostrarUltimos(){
+        $sql = "SELECT p.id, nombre, cedula, correo, total, fecha FROM `pedidos` p 
+        INNER JOIN `clientes` c ON p.usuario_id = c.id ORDER BY p.id DESC LIMIT 10";
 
         $resultado = $this->cn->prepare($sql);
 
-        if($resultado->execute())
+        if($resultado->execute()){
             return  $resultado->fetchAll();
-
+        }
         return false;
 
     }
-
-    
-
-    
-
-    
-
-*/
 
 }

@@ -27,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Tienda Agroapp</a>
+          <a class="navbar-brand" href="index.php">Tienda Agr@pp</a>
         </div>
         
       </div>
@@ -52,7 +52,7 @@
 							<label>Contraseña</label>
 							<input type="password" class="form-control" name="clave" placeholder="contraseña" required>
 							
-							<button type="submit" class="btn btn-primary btn-block">Iniciar Sesion</button>
+							<button type="submit" class="btn btn-primary btn-block">Login</button>
 						</div>
 					</div>					
 				</div>
