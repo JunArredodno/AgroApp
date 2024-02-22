@@ -18,15 +18,18 @@ class Cliente{
     }
 
     public function registrar($_params){
-		$sql = "INSERT INTO `clientes`(`nombre`, `cedula`, `correo`, `celular`, `comentario`) 
-        VALUES (:nombre,:cedula,:correo,:celular,:comentario)";
+		$sql = "INSERT INTO `clientes`(`nombre`, `cedula`,  `departamento`, `ciudad`, `dirEntrega`, `correo`,`celular`, `comentario`) 
+        VALUES (:nombre,:cedula,:departamento,:ciudad,:dirEntrega,:correo,:celular,:comentario)";
 
         $resultado = $this->cn->prepare($sql);
 
         $_array = array(
             ":nombre" => $_params['nombre'],
-			":cedula"=>$_POST['cedula'],
-			":correo"=>$_POST['correo'],
+			":cedula"=>$_params['cedula'],
+			":departamento"=>$_params['departamento'],
+			":ciudad"=>$_params['ciudad'],
+			":dirEntrega"=>$_params['dirEntrega'],
+			":correo"=>$_params['correo'],
             ":celular" => $_params['celular'],
             ":comentario" => $_params['comentario']
         );

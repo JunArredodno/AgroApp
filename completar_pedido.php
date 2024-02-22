@@ -13,6 +13,9 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
         $_params = array(
             'nombre' => $_POST['nombre'],
 			'cedula'=>$_POST['cedula'],
+			'departamento'=>$_POST['departamento'],
+			'ciudad'=>$_POST['ciudad'],
+			'dirEntrega'=>$_POST['dirEntrega'],
 			'correo'=>$_POST['correo'],
             'celular' => $_POST['celular'],
             'comentario' => $_POST['comentario']

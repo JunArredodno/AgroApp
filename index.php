@@ -66,6 +66,7 @@ require 'funciones.php';
                           if(file_exists($foto)){
                         ?>
                           <img src="<?php print $foto; ?>" class="img-responsive">
+						  <p><?php print $item['descripcion']; ?></p>
                       <?php }else{?>
                         <img src="assets/imagenes/not-found.jpg" class="img-responsive">
                       <?php }?>

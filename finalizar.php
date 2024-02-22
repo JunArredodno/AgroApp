@@ -59,6 +59,16 @@ require 'funciones.php';
                                     <label>Cedula</label>
                                     <input type="number" class="form-control" name="cedula" required>
                                 </div>
+								<div class="form-group">
+                                    <label>Departamento</label>
+                                    <input type="text" class="form-control" name="departamento" required>
+                               
+                                    <label>Ciudad</label>
+                                    <input type="text" class="form-control" name="ciudad" required>
+                                
+                                    <label>Dirección de Envio</label>
+                                    <input type="text" class="form-control" name="dirEntrega" required>
+                                </div>
                                 <div class="form-group">
                                     <label>Correo</label>
                                     <input type="email" class="form-control" name="correo" required>
