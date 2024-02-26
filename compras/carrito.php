@@ -1,16 +1,16 @@
 <?php
 //ACTIVAR LAS SESSIONES EN PHP
 session_start();
-require 'funciones.php';
+require '../funciones.php';
 
 if(isset($_GET['id']) && is_numeric($_GET['id'])){
     $id = $_GET['id'];
-    require 'vendor/autoload.php';
+    require '../vendor/autoload.php';
     $producto = new Agroapp\Productos;
     $resultado = $producto->mostrarPorId($id);
     
     if(!$resultado){
-       header('Location: index.php');
+       header('Location: ../index.php');
 	}   
 //Si el registro del carro existe:
     if(isset($_SESSION['carrito'])){
@@ -41,8 +41,8 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
     <title>Carrito de compras</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/estilos.css">
   </head>
 
   <body>
@@ -57,7 +57,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Tienda Agr@pp</a>
+          <a class="navbar-brand" href="../index.php">Tienda Agr@pp</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">
@@ -96,12 +96,12 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
                                 <td><?php print $value['NombrePro']  ?></td>
                                 <td>
                                     <?php
-                                        $foto = 'upload/'.$value['foto'];
+                                        $foto = '../upload/'.$value['foto'];
                                         if(file_exists($foto)){
                                         ?>
                                         <img src="<?php print $foto; ?>" width="35">
                                     <?php }else{?>
-                                        <img src="assets/imagenes/not-found.jpg" width="35">
+                                        <img src="../assets/imagenes/not-found.jpg" width="35">
                                     <?php }?>
                                 </td>
                                 <td><?php print $value['precio']  ?> Pesos</td>
@@ -153,7 +153,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
             ?>  
             <div class="row">
                     <div class="pull-left">
-                        <a href="index.php" class="btn btn-info">Seguir Comprando</a>
+                        <a href="../index.php" class="btn btn-info">Seguir Comprando</a>
                     </div>
                     <div class="pull-right">
                         <a href="finalizar.php" class="btn btn-success">Finalizar Compra</a>
@@ -170,8 +170,8 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])){
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
 
   </body>
 </html>

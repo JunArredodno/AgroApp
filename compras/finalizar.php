@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'funciones.php';
+require '../funciones.php';
 
 ?>
 <!DOCTYPE html>
@@ -16,8 +16,8 @@ require 'funciones.php';
     <title>Finalizar pedido</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/estilos.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/estilos.css">
   </head>
 
   <body>
@@ -32,7 +32,7 @@ require 'funciones.php';
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Tienda Agr@pp</a>
+          <a class="navbar-brand" href="../index.php">Tienda Agr@pp</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">
@@ -50,8 +50,8 @@ require 'funciones.php';
                 <div class="col-md-12">
                     <fieldset>
                         <legend>Completar Datos</legend>
-                            <form action="completar_pedido.php" method="post">
-                                <div class="form-group">
+							<form method="POST" action="completar_pedido.php">
+								<div class="form-group">
                                     <label>Nombre</label>
                                     <input type="text" class="form-control" name="nombre" required>
                                 </div>
@@ -60,29 +60,35 @@ require 'funciones.php';
                                     <input type="number" class="form-control" name="cedula" required>
                                 </div>
 								<div class="form-group">
+									<label>Correo</label>
+									<input type="email" class="form-control" name="buyerEmail" required>
+								</div>
+								<input name="shippingCountry"    type="hidden"  value="CO"  >
+								<div class="form-group">
                                     <label>Departamento</label>
                                     <input type="text" class="form-control" name="departamento" required>
                                
                                     <label>Ciudad</label>
-                                    <input type="text" class="form-control" name="ciudad" required>
+                                    <input type="text" class="form-control" name="shippingCity" required>
                                 
                                     <label>Dirección de Envio</label>
-                                    <input type="text" class="form-control" name="dirEntrega" required>
+                                    <input type="text" class="form-control" name="shippingAddress" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Correo</label>
-                                    <input type="email" class="form-control" name="correo" required>
-                                </div>
-                                <div class="form-group">
+								<div class="form-group">
                                     <label>Celular</label>
                                     <input type="number" class="form-control" name="celular" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Comentario</label>
-                                    <textarea name="comentario" class="form-control"  rows="4"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-                            </form>
+								<?php
+									$c=0;$cadenaConcatenada="";
+									foreach($_SESSION['carrito'] as $indice => $value){
+										$c++;
+										$descripcion[$c]=($value['cantidad']." libra(s) de ".$value['NombrePro']." \n");
+										$cadenaConcatenada = $cadenaConcatenada.$descripcion[$c];
+									}
+									?>
+								<input name="description" type="hidden" value="<?php print $cadenaConcatenada ?>">
+								<button type="submit" class="btn btn-primary btn-block">Enviar</button>
+							</form>
                     </fieldset>
                 </div>
             </div>

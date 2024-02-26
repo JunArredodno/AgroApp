@@ -37,7 +37,7 @@ require 'funciones.php';
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">
             <li>
-			 <a href="carrito.php" class="btn">CARRITO <span class="badge"><?php print cantidadproductos(); ?></span></a>
+			 <a href="compras/carrito.php" class="btn">CARRITO <span class="badge"><?php print cantidadproductos(); ?></span></a>
             </li> 
           </ul>
         </div><!--/.nav-collapse -->
@@ -72,7 +72,7 @@ require 'funciones.php';
                       <?php }?>
                     </div>
                     <div class="panel-footer">
-                        <a href="carrito.php?id=<?php print $item['id'] ?>" class="btn btn-success btn-block">
+                        <a href="compras/carrito.php?id=<?php print $item['id'] ?>" class="btn btn-success btn-block">
                           <span class="glyphicon glyphicon-shopping-cart"></span> Comprar
                         </a>
                     </div>

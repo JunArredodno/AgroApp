@@ -10,7 +10,7 @@ if(isset($_SESSION['carrito'])){
     unset($_SESSION['carrito'][$id]);   
     header('Location: carrito.php');
 }else{
-    header('Location: index.php');
+    header('Location: ../index.php');
 }
 
 

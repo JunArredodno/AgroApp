@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-02-2024 a las 00:40:05
+-- Tiempo de generación: 26-02-2024 a las 16:50:07
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -51,6 +51,9 @@ CREATE TABLE `clientes` (
   `id` int(11) NOT NULL,
   `nombre` varchar(250) NOT NULL,
   `cedula` varchar(10) NOT NULL,
+  `departamento` varchar(25) NOT NULL,
+  `ciudad` varchar(25) NOT NULL,
+  `dirEntrega` varchar(25) NOT NULL,
   `correo` varchar(20) NOT NULL,
   `celular` varchar(15) NOT NULL,
   `comentario` varchar(250) NOT NULL
@@ -60,9 +63,16 @@ CREATE TABLE `clientes` (
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `nombre`, `cedula`, `correo`, `celular`, `comentario`) VALUES
-(5, 'juan', '10000', 'juan@gmail.com', '321', ''),
-(6, 'as', '31321', 'gvhj@gmsai.bo', '3512', 'puto el que lol ea');
+INSERT INTO `clientes` (`id`, `nombre`, `cedula`, `departamento`, `ciudad`, `dirEntrega`, `correo`, `celular`, `comentario`) VALUES
+(5, 'juan', '10000', '', '', '', 'juan@gmail.com', '321', ''),
+(6, 'as', '31321', '', '', '', 'gvhj@gmsai.bo', '3512', 'puto el que lol ea'),
+(7, 'jhon', '1245', 'META', 'Villavicencio', 'cll 35 #42-24', 'jhoanes@gm.com', '215215', 'Hola'),
+(8, 'juan', '25261', 'Meta', 'Villavicencio', 'calle 60 Norte #44-22', 'juan@gmail.com', '321', 'A ver si funciona'),
+(9, 'juan', '12345', 'Meta', 'Villavo', 'cll 70 sus', 'juan.e.arredondosaen', '12345', '1 libra(s) de Frijol \r\n1 libra(s) de Habichuela \r\n'),
+(12, 'jhon', '45678', 'popayan', 'cucuta', 'asd ar125', 'ajausd@gja.aicm', '145353', '3 libra(s) de Frijol \r\n1 libra(s) de Habichuela \r\n'),
+(14, 'sender', '678910', 'Meta', 'Calvario', 'ni idea jaja salu2', 'juaneduardoarredondo', '1325315', '6 libra(s) de Habichuela \r\n'),
+(15, 'Jeas', '123456', 'Meta', 'Villavicencio', 'Calle 70 SUr #45-22', 'juaneduardoarredondo', '3123066611', '1 libra(s) de Maiz \r\n1 libra(s) de Pepino \r\n'),
+(16, 'Juan manuel', '35261091', 'Meta', 'Villavicencio', 'Calle 70 SUr #45-22', 'juaneduardoarredondo', '315881', '5 libra(s) de Maiz \r\n');
 
 -- --------------------------------------------------------
 
@@ -89,7 +99,21 @@ INSERT INTO `detalle_pedidos` (`id`, `pedido_id`, `producto_id`, `precio`, `cant
 (5, 2, 1, 3000, 1, 0),
 (6, 3, 14, 3000, 1, 0),
 (7, 3, 12, 3000, 1, 0),
-(8, 3, 11, 5000, 1, 0);
+(8, 3, 11, 5000, 1, 0),
+(9, 4, 13, 15000, 1, 0),
+(10, 5, 4, 2000, 1, 0),
+(11, 5, 0, 2500, 1, 0),
+(12, 6, 0, 2500, 1, 0),
+(13, 6, 5, 2500, 1, 0),
+(14, 7, 0, 2500, 1, 0),
+(15, 7, 5, 2500, 1, 0),
+(18, 9, 0, 2500, 3, 0),
+(19, 9, 5, 2500, 1, 0),
+(20, 10, 1, 3000, 4, 0),
+(21, 11, 5, 2500, 6, 0),
+(22, 12, 11, 5000, 1, 0),
+(23, 12, 13, 15000, 1, 0),
+(24, 13, 11, 5000, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -111,7 +135,14 @@ CREATE TABLE `pedidos` (
 
 INSERT INTO `pedidos` (`id`, `usuario_id`, `total`, `fecha`, `estado`) VALUES
 (2, 5, 23000, '2024-02-11', 1),
-(3, 6, 11000, '2024-02-15', 1);
+(3, 6, 11000, '2024-02-15', 1),
+(4, 7, 15000, '2024-02-18', 1),
+(5, 8, 4500, '2024-02-22', 1),
+(6, 9, 5000, '2024-02-26', 1),
+(9, 12, 10000, '2024-02-26', 1),
+(11, 14, 15000, '2024-02-26', 1),
+(12, 15, 20000, '2024-02-26', 1),
+(13, 16, 25000, '2024-02-26', 1);
 
 -- --------------------------------------------------------
 
@@ -142,7 +173,7 @@ INSERT INTO `productos` (`id`, `NombrePro`, `descripcion`, `foto`, `precio`, `ca
 (5, 'Habichuela', 'Libra de habichuelas a 2500 pesos', 'habichuela.jpg', 2500, 2, '2024-02-07', 1),
 (11, 'Maiz', 'Libra de Mazorca a 5000 pesos', 'maiz.jpg', 5000, 2, '2024-02-07', 1),
 (12, 'Mora', 'Libra de mora en 3000 pesos', 'Mora.jpg', 3000, 1, '2024-02-07', 1),
-(13, 'Pepino', '1 buen pepino para tus días de solecdad a 15000 pesos', 'PEPINO.jpg', 15000, 2, '2024-02-07', 1),
+(13, 'Pepino', 'Pepino fresco a 15000 pesos la unidad', 'PEPINO.jpg', 15000, 2, '2024-02-07', 1),
 (14, 'Pimenton', 'Libra de pimentón a 3000 pesos', 'pimenton.jpg', 3000, 2, '2024-02-07', 1);
 
 -- --------------------------------------------------------
@@ -219,19 +250,19 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_pedidos`
 --
 ALTER TABLE `detalle_pedidos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidos`
 --
 ALTER TABLE `pedidos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
