@@ -75,10 +75,10 @@ class Productos{
     }
 
     public function mostrar(){
-        $sql = "SELECT productos.id, NombrePro,descripcion,foto,Nombre,precio,fecha,estado FROM productos 
+        $sql = "SELECT productos.id, NombrePro,descripcion,categoria_id,foto,Nombre,precio,fecha,estado FROM productos 
         
         INNER JOIN categorias
-        ON productos.categoria_id = categorias.id ORDER BY productos.id DESC
+        ON productos.categoria_id = categorias.id ORDER BY productos.categoria_id DESC
         ";
         
         $resultado = $this->cn->prepare($sql);

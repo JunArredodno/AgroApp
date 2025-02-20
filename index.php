@@ -21,8 +21,8 @@ require 'funciones.php';
   </head>
 
   <body>
-
-    <!-- Fixed navbar -->
+    
+    <!--Fixed navbar-->
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -34,10 +34,31 @@ require 'funciones.php';
           </button>
           <a class="navbar-brand" href="index.php">Tienda Agr@pp</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
+     <!--                     Sistema de busqueda
+      <form class="navbar-form navbar-left" method="POST" action="indice2.php" role="search">
+        <div class="form-group">
+          <input type="text" name="producto" class="form-control" placeholder="Buscar">
+        </div>
+        <button type="submit" class="btn btn-default">Enviar</button>
+      </form -->
+      
+      <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">
+          <li class="dropdown">
+            <?php
+              if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info'])){
+            ?>
             <li>
-			 <a href="compras/carrito.php" class="btn">CARRITO <span class="badge"><?php print cantidadproductos(); ?></span></a>
+            <a href="registrarse.php">Registrarse</a>
+            <li>  
+            <a href="inises.php">Iniciar Sesion <?php }else{ ?></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php print $_SESSION['usuario_info']['nombre_usuario']; }?><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="panel/cerrar_session.php">Cerrar Sesion</a></li>
+					</ul>
+				  </li>
+            <li>
+			        <a href="compras/carrito.php" class="btn">CARRITO <span class="badge"><?php print cantidadproductos(); ?></span></a>
             </li> 
           </ul>
         </div><!--/.nav-collapse -->
@@ -58,6 +79,19 @@ require 'funciones.php';
               <div class="col-md-3">
                   <div class="panel panel-default">
                     <div class="panel-heading">
+                      <?php
+                    switch($item['categoria_id']){
+                      case 1:
+                        print "frutas";
+                        break;
+                      case 2:
+                        print "Verduras";
+                        break;
+                      case 3:
+                        print "Hortalizas";
+                        break;
+                    }
+                    ?>
                       <h1 class="text-center Productos-Disponibles"><?php print $item['NombrePro'] ?></h1>  
                     </div>
                     <div class="panel-body">

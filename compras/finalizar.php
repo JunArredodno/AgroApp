@@ -50,6 +50,9 @@ require '../funciones.php';
                 <div class="col-md-12">
                     <fieldset>
                         <legend>Completar Datos</legend>
+                        <?php 
+                        if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info'])){
+                        ?>
 							<form method="POST" action="completar_pedido.php">
 								<div class="form-group">
                                     <label>Nombre</label>
@@ -79,12 +82,14 @@ require '../funciones.php';
                                     <input type="number" class="form-control" name="celular" required>
                                 </div>
 								<?php
+                }else{ print "hello my baby, hello my honey"; }
 									$c=0;$cadenaConcatenada="";
 									foreach($_SESSION['carrito'] as $indice => $value){
 										$c++;
 										$descripcion[$c]=($value['cantidad']." libra(s) de ".$value['NombrePro']." \n");
 										$cadenaConcatenada = $cadenaConcatenada.$descripcion[$c];
 									}
+                
 									?>
 								<input name="description" type="hidden" value="<?php print $cadenaConcatenada ?>">
 								<button type="submit" class="btn btn-primary btn-block">Enviar</button>
