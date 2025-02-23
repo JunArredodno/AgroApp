@@ -40,7 +40,7 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <input type="text" class="form-control" name="nombre" placeholder="Nombre de usuario" >
-                            <input type="password" class="form-control" name="contra" placeholder="Contraseña" >
+                            <input type="password" class="form-control" name="contra" placeholder="Contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Debe contener al menos 1 número, 8 o mas caracteres, una letra mayuscula y minuscula" required>
                             <input type="text" class="form-control" name="cedula" placeholder="Cedula" >
                             <!--
                             Contraseña segura:
@@ -51,7 +51,7 @@
                             <input type="text" class="form-control" name="onedirection" placeholder="Direccion" >
                             <input type="email" class="form-control" name="email" placeholder="Correo" >
                             <input type="text" class="form-control" name="celular" placeholder="Número telefonico" >
-                            <input type="submit" class="btn btn-block" value="Submit">
+                            <input type="submit" class="btn btn-block" value="Registrarse">
                         </div>
                     </div>
                 </form>

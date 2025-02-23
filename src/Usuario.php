@@ -36,10 +36,20 @@ class Usuario{
 		}
         return false;
     }
+	/*public function mostrarAgricultor(){
+		$sql = "SELECT * FROM `usuarios` WHERE `estado`=2 ";
 
+		$resultado = $this->cn->prepare($sql);
+
+		if($resultado->execute()){
+			return  $resultado->fetchAll();
+		}
+		return false;
+
+	}*/
     public function login($nombre, $clave){
         
-        $sql = "SELECT nombre_usuario FROM `usuarios` WHERE `nombre_usuario`= :nombre AND `clave`= :clave ";
+        $sql = "SELECT * FROM `usuarios` WHERE `nombre_usuario`= :nombre AND `clave`= :clave ";
         
         $resultado = $this->cn->prepare($sql);
         $_array = array(

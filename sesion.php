@@ -18,6 +18,7 @@
         );
     
         $nuevaousuario = $registrar->regis($_params);
+		header("Location:index.php");
     }
     //Inicio de sesion
     if($_SERVER['REQUEST_METHOD'] ==='GET'){
@@ -32,6 +33,13 @@
             session_start();
             $_SESSION['usuario_info']= array(
                 'nombre_usuario'=>$resultado['nombre_usuario'],
+				//'clave'=>$resultado['clave'],
+				'cedula'=>$resultado['cedula'],
+				'departamento'=>$resultado['departamento'],
+				'ciudad'=>$resultado['ciudad'],
+				'dirEntrega'=>$resultado['dirEntrega'],
+				'correo'=>$resultado['correo'],
+				'celular'=>$resultado['celular'],
                 'estado'=>$resultado['estado']
             );
             header("Location:index.php");

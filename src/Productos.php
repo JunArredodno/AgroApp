@@ -88,7 +88,6 @@ class Productos{
 
         return false;
     }
-
     public function mostrarPorId($id){
         
         $sql = "SELECT * FROM `productos` WHERE `id`=:id ";

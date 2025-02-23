@@ -1,7 +1,13 @@
 <?php
 session_start();
 require '../funciones.php';
-
+$name=$_SESSION['usuario_info']['nombre_usuario'];
+$cedula=$_SESSION['usuario_info']['cedula'];
+$depar=$_SESSION['usuario_info']['departamento'];
+$city=$_SESSION['usuario_info']['ciudad'];
+$dirEntrega=$_SESSION['usuario_info']['dirEntrega'];
+$correo=$_SESSION['usuario_info']['correo'];
+$celuco=$_SESSION['usuario_info']['celular'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,50 +55,52 @@ require '../funciones.php';
             <div class="row">
                 <div class="col-md-12">
                     <fieldset>
-                        <legend>Completar Datos</legend>
-                        <?php 
-                        if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info'])){
-                        ?>
-							<form method="POST" action="completar_pedido.php">
+                        <legend>Confirmar Datos</legend>
+						
+							<form method="POST" action="completar_pedido2.php">
 								<div class="form-group">
                                     <label>Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" required>
+                                    <input type="text" class="form-control" name="nombre" value="<?php print $name ?>" placeholder="nombre" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Cedula</label>
-                                    <input type="number" class="form-control" name="cedula" required>
+                                    <input type="number" class="form-control" name="cedula" value="<?php print $cedula ?>" placeholder="Cedula" required>
                                 </div>
 								<div class="form-group">
 									<label>Correo</label>
-									<input type="email" class="form-control" name="buyerEmail" required>
+									<input type="email" class="form-control" name="buyerEmail" value="<?php print $correo ?>" placeholder="Correo" required>
 								</div>
 								<input name="shippingCountry"    type="hidden"  value="CO"  >
 								<div class="form-group">
                                     <label>Departamento</label>
-                                    <input type="text" class="form-control" name="departamento" required>
+                                    <input type="text" class="form-control" name="departamento" value="<?php print $depar ?>" placeholder="Departamento" required>
                                
                                     <label>Ciudad</label>
-                                    <input type="text" class="form-control" name="shippingCity" required>
+                                    <input type="text" class="form-control" name="shippingCity" value="<?php print $city ?>" placeholder="Ciudad" required>
                                 
                                     <label>Dirección de Envio</label>
-                                    <input type="text" class="form-control" name="shippingAddress" required>
+                                    <input type="text" class="form-control" name="shippingAddress" value="<?php print $dirEntrega ?>" placeholder="Dirección de Envio" required>
                                 </div>
 								<div class="form-group">
                                     <label>Celular</label>
-                                    <input type="number" class="form-control" name="celular" required>
+                                    <input type="number" class="form-control" name="celular" value="<?php print $celuco ?>" placeholder="Celular" required>
                                 </div>
 								<?php
-                }else{ header("Location:finalizar2.php"); }
+									$precioF=0;
 									$c=0;$cadenaConcatenada="";
 									foreach($_SESSION['carrito'] as $indice => $value){
 										$c++;
+										$precio = ($value['precio'] * $value['cantidad']);
 										$descripcion[$c]=($value['cantidad']." libra(s) de ".$value['NombrePro']." \n");
+										
 										$cadenaConcatenada = $cadenaConcatenada.$descripcion[$c];
+										$precioF=$precioF+$precio;
 									}
                 
 									?>
-								<input name="description" type="hidden" value="<?php print $cadenaConcatenada ?>">
-								<button type="submit" class="btn btn-primary btn-block">Enviar</button>
+								<input name="description" type="hidden" value="<?php echo $cadenaConcatenada ?>">
+								<input name="precio" type="hidden" value="<?php print $precioF ?>">
+								<button type="submit" class="btn btn-primary btn-block">Confirmar</button>
 							</form>
                     </fieldset>
                 </div>

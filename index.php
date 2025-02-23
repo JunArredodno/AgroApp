@@ -34,13 +34,13 @@ require 'funciones.php';
           </button>
           <a class="navbar-brand" href="index.php">Tienda Agr@pp</a>
         </div>
-     <!--                     Sistema de busqueda
-      <form class="navbar-form navbar-left" method="POST" action="indice2.php" role="search">
+     <!--                     Sistema de busqueda-->
+      <form class="navbar-form navbar-left" method="POST" action="search.php" role="search">
         <div class="form-group">
           <input type="text" name="producto" class="form-control" placeholder="Buscar">
         </div>
         <button type="submit" class="btn btn-default">Enviar</button>
-      </form -->
+      </form>
       
       <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">
@@ -70,7 +70,11 @@ require 'funciones.php';
             <?php
 				require 'vendor/autoload.php';
 				$producto = new Agroapp\Productos;
-				$info_productos = $producto->mostrar();
+        //$agricultor= new Agroapp\Usuario;
+
+       /*$surtidor=$agricultor->mostrarAgricultor();
+       $cantidadAgri=count($surtidor);*/
+        $info_productos = $producto->mostrar();
 				$cantidad = count($info_productos);
 				if($cantidad > 0){
 					for($x =0; $x < $cantidad; $x++){
@@ -101,6 +105,8 @@ require 'funciones.php';
                         ?>
                           <img src="<?php print $foto; ?>" class="img-responsive">
 						  <p><?php print $item['descripcion']; ?></p>
+              <!--<p>?php  surtidos($cantidadAgri, $surtidor);
+              ?></p>-->
                       <?php }else{?>
                         <img src="assets/imagenes/not-found.jpg" class="img-responsive">
                       <?php }?>
@@ -122,9 +128,86 @@ require 'funciones.php';
         </div>
       
 
-    </div> <!-- /container -->
+    </div> <!-- Contactarnos -->
 
+    <div id="contact" class="text-center">
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>Quejas, dudas, o reclamos:</h2>
+      <hr>
+      <p>Este es el servicio de quejas y reclamos; en caso de tener dudas con su pedido<br>
+       inquietudes con respecto al uso de la pagina, o no haber recivido su pedido en <br>
+       menos de 1 semana mandenos un mensaje.</p>
+    </div>
+    <div class="col-md-10 col-md-offset-1 contact-info">
+      <div class="col-md-4">
+        <h3>Dirección</h3>
+        <hr>
+        <div class="contact-item">
+          <p>Villavicencio Meta,</p>
+          <p>Vía a Puerto López, km. 2, margen izquierda</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Horarios de atención</h3>
+        <hr>
+        <div class="contact-item">
+          <p>Lunes-Sabado: 07:00 - 18:00</p>
+          <p>Domingos: CERRADO</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3>Info de contacto</h3>
+        <hr>
+        <div class="contact-item">
+          <p>Núm: +57 321 306 6611</p>
+          <p>Email: juan.arredondo@campusvirtual<br>.aunarvillavicencio.edu.co</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 col-md-offset-2">
+      <h3>Dejanos tu mensaje aquí</h3>
+      <form name="sentMessage" id="contactForm" novalidate>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="text" id="name" class="form-control" placeholder="Nombre" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <input type="email" id="email" class="form-control" placeholder="Email" required="required">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea name="message" id="message" class="form-control" rows="4" placeholder="Mensaje" required></textarea>
+          <p class="help-block text-danger"></p>
+        </div>
+        <div id="success"></div>
+        <button type="submit" class="btn btn-custom btn-lg">Enviar Mensaje</button>
+      </form>
+    </div>
+  </div>
+</div>
 
+<!-- Footer Section 
+<div id="footer">
+  <div class="container text-center">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="social">
+        <ul>
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <p>&copy; 2023 Agr@pp. Diseñado por <a href="http://www.templatewire.com" rel="nofollow">Monalos Sender</a></p>
+    </div>
+  </div>
+</div>-->
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
