@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info'])){
+  if(!isset($_SESSION['usuario_info']) OR empty($_SESSION['usuario_info']) OR $_SESSION['usuario_info']['estado']==0){
     header("location: ../index.php");
   }
 	require ('../../vendor/autoload.php');
@@ -57,9 +57,9 @@
 					<a href="productos/index.php" class="btn">Productos</a>	
 				</li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Perfil<span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php print $_SESSION['usuario_info']['nombre_usuario'] ?><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Cerrar Sesion</a></li>
+						<li><a href="../cerrar_session.php">Cerrar Sesion</a></li>
 					</ul>
 				</li>
 			</ul>

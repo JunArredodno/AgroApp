@@ -36,11 +36,15 @@ class Usuario{
 		}
         return false;
     }
-	/*public function mostrarAgricultor(){
-		$sql = "SELECT * FROM `usuarios` WHERE `estado`=2 ";
+	/*public function mostrarAgricultor($id){
+		$sql = "SELECT `correo` FROM `usuarios` WHERE `id`=:id ";
 
 		$resultado = $this->cn->prepare($sql);
 
+		$_array = array(
+            ":id" =>$id
+        );
+		
 		if($resultado->execute()){
 			return  $resultado->fetchAll();
 		}

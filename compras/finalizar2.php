@@ -102,6 +102,11 @@ $celuco=$_SESSION['usuario_info']['celular'];
 								<input name="precio" type="hidden" value="<?php print $precioF ?>">
 								<button type="submit" class="btn btn-primary btn-block">Confirmar</button>
 							</form>
+							<div class="row">
+								<div class="pull-left">
+									<a href="../index.php" class="btn btn-info">Seguir Comprando</a>
+								</div>
+							</div>
                     </fieldset>
                 </div>
             </div>

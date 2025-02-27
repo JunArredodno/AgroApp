@@ -12,7 +12,7 @@
             session_start();
             $_SESSION['usuario_info']= array(
                 'nombre_usuario'=>$resultado['nombre_usuario'],
-                'estado'=>1
+                'estado'=>$resultado['estado']
             );
             header("Location:dashboard.php");
         }else{

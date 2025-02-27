@@ -7,6 +7,7 @@ function agregarProducto($resultado, $id, $cantidad = 1){
         'NombrePro' => $resultado['NombrePro'],
         'foto' => $resultado['foto'],
         'precio' => $resultado['precio'],
+		'id_surtidor'=>$resultado['id_surtidor'],
         'cantidad' => $cantidad
    );
 }
@@ -43,6 +44,38 @@ function cantidadProductos(){
     }
 
     return $cantidad;
+}
+
+function correos($naildo,$compra){
+	if($naildo){/*
+		$maxi=count($naildo);
+		if($maxi<2){
+			$sql="select `correo` from `usuarios` where `id`=:id";
+			$_array = array(
+				":id" => $naildo
+			);
+			$resultado = $this->cn->prepare($sql);
+
+			if($resultado->execute()){
+				$to=$resultado['correo'];
+				$mensaje="El usuario ".$to." te a omprado: ".$compra;
+				mail($to,"Te han comprado un producto",$mensaje);
+			}
+			
+		}else{
+			require 'src/Usuario.php';
+			$surtidor= new Agroapp\Usuario;
+			$correos=$surtidor->mostrarAgricultor($naildo);
+			
+			$maximo=count($correos);
+			$destinatario="";
+			for($x=0;$x<$maximo;$x++){
+				$item=$correos[$x];
+				$destinatario=$destinatario.$item['correo']." ";
+			}
+			$to=$correos;
+		}*/
+	}
 }
 
 function surtidos($cantidadAgri, $surtidor){

@@ -17,7 +17,13 @@ if($_SERVER['REQUEST_METHOD'] ==='POST'){
 	$firmacreada = md5("$ApiKey~$merchant_id~$referenceCode~$New_value~$currency");
 
     if(isset($_SESSION['carrito']) && !empty($_SESSION['carrito'])){
-		
+			$c=0;$surtido=[];$compra=$_POST['descripcion'];
+			foreach($_SESSION['carrito'] as $indice => $value){
+				$c++;
+				array_push($surtido,$value['id_surtidor']);
+			}
+			//print_r ($surtido);
+			correos($surtido,$compra);
 		//-------------------------------
         $cliente = new Agroapp\Cliente;
     
